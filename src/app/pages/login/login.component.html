@@ -1,0 +1,7 @@
+<FlexboxLayout flexDirection="column" alignContent="center" justifyContent="center">
+  <StackLayout [formGroup]="loginForm" class="form">
+    <TextField style.placeholderColor="rgba(255,255,255, 0.7)" formControlName="username" hint="Username" secure="false" autocorrect="false" class="input"></TextField>
+    <TextField style.placeholderColor="rgba(255,255,255, 0.7)" formControlName="password" hint="Password" secure="true" autocorrect="false" class="input"></TextField>
+    <Button class="btn btn-primary btn-outline" text="Login" (tap)="login($event)"></Button>
+  </StackLayout>
+</FlexboxLayout>
