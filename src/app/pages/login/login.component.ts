@@ -2,8 +2,8 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Component, OnInit } from '@angular/core';
 import { alert } from "tns-core-modules/ui/dialogs";
 import { RouterExtensions } from "nativescript-angular/router";
-
 import { AuthService } from './../../services/auth.service';
+import * as appSettings from "tns-core-modules/application-settings";
 
 @Component({
   selector: 'ns-login',
@@ -13,10 +13,11 @@ import { AuthService } from './../../services/auth.service';
 })
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
+  private store = appSettings;
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: RouterExtensions
+    private router: RouterExtensions,
   ) { }
   public ngOnInit() {
     this.loginForm = this.fb.group({
@@ -28,7 +29,7 @@ export class LoginComponent implements OnInit {
   public login() {
     this.authService.signin(this.loginForm.value).subscribe(
       (res: any) => {
-        this.authService.token = res.token;
+        this.store.setString('token', res.token);
         this.router.navigate(['/order'], { clearHistory: true });
       },
       err => {
