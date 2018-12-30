@@ -6,10 +6,10 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   public signin(user: Object) {
-    return this.http.post('https://meal.fusionworks.md/api/auth/login-mobile', user)
+    return this.http.post('auth/login-mobile', user)
   }
 
   public isAuth() {
-    return this.http.get('https://meal.fusionworks.md/api/auth/is-auth')
+    return this.http.get('auth/is-auth')
   }
 }

@@ -4,10 +4,10 @@ import { NativeScriptRouterModule } from "nativescript-angular/router";
 
 import { LoginComponent } from './pages/login/login.component';
 import { OrderComponent } from "./pages/order/order.component";
+import { AuthGuard } from "./services/auth-guard.service";
 
 const routes: Routes = [
-    { path: "", redirectTo: "/login", pathMatch: "full" },
-    { path: "order", component: OrderComponent },
+    { path: "", component: OrderComponent, canActivate: [ AuthGuard ] },
     { path: "login", component: LoginComponent },
 ];
 

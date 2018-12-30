@@ -1,3 +1,4 @@
+import { AuthGuard } from './services/auth-guard.service';
 import { NativeScriptRouterModule } from 'nativescript-angular/router';
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
@@ -32,8 +33,9 @@ import { AuthService } from "./services/auth.service";
     OrderComponent
   ],
   providers: [
+    AuthGuard,
     AuthService,
-    // {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
   ],
   schemas: [
     NO_ERRORS_SCHEMA
