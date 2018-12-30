@@ -11,7 +11,7 @@ export class TokenInterceptor implements HttpInterceptor {
     request = request.clone({
       url: `https://meal.fusionworks.md/api/${request.url}`,
       setHeaders: {
-        Authorization: this.store.getString('token'),
+        Authorization: this.store.getString('token') || '',
         'Content-Type': 'application/json',
       }
     });

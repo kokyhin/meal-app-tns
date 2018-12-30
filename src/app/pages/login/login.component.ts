@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     this.authService.signin(this.loginForm.value).subscribe(
       (res: any) => {
         this.store.setString('token', res.token);
-        this.router.navigate(['/order'], { clearHistory: true });
+        this.router.navigate([''], { clearHistory: true });
       },
       err => {
         alert({
